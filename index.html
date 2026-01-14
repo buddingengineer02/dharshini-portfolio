@@ -1,283 +1,281 @@
-<!-- index.html - FIRE Portfolio with Smooth Animations and Effects for Dharshini Babu -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dharshini Babu | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #6d28d9;
-      --secondary: #9333ea;
-      --bg-light: #f3f4f6;
-      --text-dark: #1f2937;
-      --glow: 0 0 20px rgba(147, 51, 234, 0.6);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Poppins', sans-serif;
-      line-height: 1.6;
-      background: var(--bg-light);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
-    a { color: var(--primary); text-decoration: none; }
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 20px;
-      background: radial-gradient(circle at top left, var(--primary), var(--secondary));
-      color: #fff;
-      animation: pulsebg 10s ease infinite;
-    }
-    @keyframes pulsebg {
-      0%, 100% { background-position: top left; }
-      50% { background-position: bottom right; }
-    }
-    h1 {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      animation: flame 4s infinite ease-in-out;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-    }
-    @keyframes flame {
-      0%, 100% { transform: scale(1); text-shadow: var(--glow); }
-      50% { transform: scale(1.04); text-shadow: 0 0 25px rgba(255, 255, 255, 0.4); }
-    }
-    nav { margin-top: 1.2rem; animation: fadeIn 2s ease 0.5s forwards; opacity: 0; }
-    nav a { margin: 0 14px; font-weight: 600; position: relative; }
-    nav a::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: white;
-      left: 0;
-      bottom: -4px;
-      transition: width 0.3s;
-    }
-    nav a:hover::after { width: 100%; }
-    .btn {
-      display: inline-block;
-      margin-top: 2rem;
-      padding: 12px 28px;
-      background: white;
-      color: var(--primary);
-      border-radius: 40px;
-      font-weight: 600;
-      box-shadow: var(--glow);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
-    }
-    section {
-      max-width: 1000px;
-      margin: auto;
-      padding: 60px 20px;
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-    section.show { opacity: 1; transform: translateY(0); }
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 1.2rem;
-      color: var(--primary);
-      position: relative;
-    }
-    h2::after {
-      content: "";
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: var(--secondary);
-      margin-top: 8px;
-    }
-    .skills span {
-      display: inline-block;
-      background: #fff;
-      margin: 6px;
-      padding: 10px 18px;
-      border-radius: 22px;
-      box-shadow: var(--glow);
-      font-size: 1rem;
-      font-weight: 600;
-      transition: transform 0.3s;
-    }
-    .skills span:hover {
-      transform: scale(1.1) rotate(-1deg);
-    }
-    .projects {
-      display: grid;
-      gap: 32px;
-    }
-    @media(min-width: 700px) {
-      .projects { grid-template-columns: repeat(2, 1fr); }
-    }
-    .project {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-      transform: scale(0.98);
-      transition: transform 0.4s;
-    }
-    .project:hover { transform: scale(1.03); }
-    .project img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      filter: saturate(1.2) contrast(1.1);
-    }
-    .project-body {
-      padding: 20px;
-    }
-    .project-body h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.5rem;
-      color: var(--secondary);
-    }
-    .links a {
-      margin-right: 14px;
-      font-weight: 600;
-    }
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      animation: fadeIn 2s ease 0.4s forwards;
-    }
-    .contact-form input, .contact-form textarea {
-      padding: 14px 18px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: inherit;
-    }
-    .contact-form button {
-      background: var(--primary);
-      color: #fff;
-      padding: 14px;
-      border: none;
-      border-radius: 8px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .contact-form button:hover {
-      background: var(--secondary);
-    }
-    footer {
-      text-align: center;
-      padding: 30px 0;
-      font-size: 0.9rem;
-      background: #e5e7eb;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .profile-pic {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 4px solid #fff;
-  object-fit: cover;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-  margin-bottom: 20px;
-  animation: fadeIn 2s ease;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dharshini B | Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-  </style>
+/* ===== BODY ===== */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(120deg, #f1f5f9, #e2e8f0);
+    color: #1e293b;
+    scroll-behavior: smooth;
+}
+
+/* ===== HERO ===== */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #020617, #0f172a);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.hero-box {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 24px;
+    padding: 50px;
+    max-width: 850px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+}
+
+/* ===== PROFILE PHOTO ===== */
+.profile-pic {
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid rgba(56,189,248,0.9);
+    box-shadow: 0 0 45px rgba(56,189,248,0.7);
+    margin-bottom: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+}
+.profile-pic:hover {
+    transform: scale(1.05);
+    transition: 0.3s ease;
+}
+
+/* ===== HERO TEXT ===== */
+.hero-box h1 {
+    font-size: 44px;
+    color: #e5e7eb;
+}
+
+.hero-box p {
+    font-size: 18px;
+    color: #cbd5f5;
+    margin: 12px 0 22px;
+}
+
+/* ===== LINKS ===== */
+.links a {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid rgba(56,189,248,0.5);
+    color: #38bdf8;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    background: #38bdf8;
+    color: #020617;
+}
+
+/* ===== ANIMATION ===== */
+.animate {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s forwards;
+}
+
+.delay { animation-delay: 0.3s; }
+.delay2 { animation-delay: 0.6s; }
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== SECTIONS ===== */
+section {
+    max-width: 1000px;
+    margin: 70px auto;
+    padding: 35px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* ===== REVEAL ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== HEADINGS ===== */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h2::after {
+    content: "";
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    display: block;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+/* ===== SKILLS ===== */
+.skills span {
+    display: inline-block;
+    padding: 10px 18px;
+    margin: 8px;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+    font-weight: 500;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== PROJECTS ===== */
+.card {
+    background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px 0;
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.tech {
+    font-size: 14px;
+    margin-top: 8px;
+    color: #475569;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    background: #020617;
+    color: #cbd5f5;
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
+}
+</style>
 </head>
+
 <body>
-  <!-- HERO -->
-  <header>
-    <img src="profile-pic.jpeg" alt="Dharshini Babu" class="profile-pic" />
 
-    <h1>Dharshini B</h1>
-    <p>Aspiring CSE student | Web Dev & Automation Enthusiast</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a class="btn" href="resume.pdf" download>Download Résumé</a>
-  </header>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I’m a Computer Science Engineering student passionate about building real‑time solutions. Experienced in Java, Arduino, Web Development, and automation tools like UiPath. I enjoy tackling technical challenges and continuously learning emerging technologies.</p>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills" class="skills">
-    <h2>Skills</h2>
-    <div>
-      <span>Java</span><span>HTML &amp; CSS</span><span>Arduino</span><span>SQL</span><span>UiPath</span><span>Machine Learning (KNN)</span><span>React Basics</span>
+<!-- HERO -->
+<div class="hero">
+    <div class="hero-box">
+        <img src="profile-pic.jpeg" alt="Dharshini B" class="profile-pic">
+        <h1 class="animate">Dharshini B</h1>
+        <p class="animate delay">Aspiring Computer Science Engineer</p>
+        <div class="links animate delay2">
+            <a href="mailto:dharshinib.47@gmail.com">Email</a>
+            <a href="https://github.com/buddingengineer02" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/dharshini-babu" target="_blank">LinkedIn</a>
+        </div>
     </div>
-  </section>
+</div>
 
-  <!-- PROJECTS -->
-  <section id="projects">
+<section class="reveal">
+    <h2>Objective</h2>
+    <p>
+        Aspiring Computer Science Engineer with strong fundamentals in Java,
+        front-end development, and automation tools. Passionate about building
+        efficient, scalable, and impactful solutions.
+    </p>
+</section>
+
+<section class="reveal">
+    <h2>Education</h2>
+    <p><strong>B.E Computer Science Engineering</strong></p>
+    <p>Panimalar Engineering College, Chennai (2022 – 2026)</p>
+    <p>CGPA: 8.89 / 10</p>
+</section>
+
+<section class="reveal">
+    <h2>Technical Skills</h2>
+    <div class="skills">
+        <span>Java</span><span>HTML</span><span>CSS</span>
+        <span>JavaScript</span><span>Python</span>
+        <span>SQL</span><span>Power BI</span><span>UiPath</span>
+    </div>
+</section>
+
+<section class="reveal">
     <h2>Projects</h2>
-    <div class="projects">
-      <div class="project">
-        <img alt="Smart Ambulance Dispatch System" />
-        <div class="project-body">
-          <h3>Smart Ambulance Dispatch System</h3>
-          <p>Real‑time ML‑based ambulance allocation system using geolocation APIs and KNN algorithm.</p>
-          <p class="links"><a href="https://github.com/buddingengineer/ambulance-dispatch" target="_blank">GitHub</a></p>
-        </div>
-      </div>
-      <div class="project">
-        <img alt="Traffic Control Management System" />
-        <div class="project-body">
-          <h3>Traffic Control Management System</h3>
-          <p>Density‑based traffic signal automation built with Arduino sensors.</p>
-          <p class="links"><a href="https://github.com/buddingengineer/traffic-control" target="_blank">GitHub</a></p>
-        </div>
-      </div>
+
+    <div class="card">
+        <h3>Traffic Control Management System</h3>
+        <p>Optimized traffic signal timings using vehicle density analysis.</p>
+        <p class="tech">Arduino • IR Sensors • ESP32 • Embedded C</p>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <form class="contact-form" onsubmit="event.preventDefault(); alert('🔥 Message sent! 🔥');">
-      <input type="text" placeholder="Name" required />
-      <input type="email" placeholder="Email" required />
-      <textarea rows="5" placeholder="Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
+    <div class="card">
+        <h3>Smart Ambulance Dispatch System</h3>
+        <p>ML-driven system to identify and assign nearest ambulance in real time.</p>
+        <p class="tech">Python • Flask • Machine Learning • APIs</p>
+    </div>
+</section>
 
-  <footer>
-    © <span id="year"></span> Dharshini Babu | Designed with passion & flair 💜
-  </footer>
+<section class="reveal">
+    <h2>Internship</h2>
+    <p><strong>Web Development Intern – Cognifyz Technologies</strong></p>
+    <p>June 2024 – July 2024</p>
+</section>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          observer.unobserve(entry.target);
+<section class="reveal">
+    <h2>Achievements</h2>
+    <ul>
+        <li>PECTEAM2K24 & 2K25 – Project Presentations</li>
+        <li>70+ problems solved on coding platforms</li>
+        <li>Active member of RPA Club</li>
+    </ul>
+</section>
+
+<footer>
+    © 2026 Dharshini B
+</footer>
+
+<script>
+const reveals = document.querySelectorAll(".reveal");
+window.addEventListener("scroll", () => {
+    reveals.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < window.innerHeight - 120) {
+            sec.classList.add("active");
         }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('section').forEach((sec) => observer.observe(sec));
-  </script>
+    });
+});
+</script>
+
 </body>
 </html>
-
